@@ -1,74 +1,90 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { ShoppingCart, Store, Network } from 'lucide-react';
+import { ArrowRight, ShoppingCart, Store } from 'lucide-react';
 
 export default function Solution() {
   return (
-    <section className="py-20 lg:py-32 bg-white relative overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-purple-50/30 to-transparent"></div>
-      
-      <div className="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">
+    <section className="py-20 lg:py-28 bg-gray-50 relative overflow-hidden">
+      {/* 배경 장식 */}
+      <div className="absolute inset-0 overflow-hidden">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-gradient-to-r from-purple-100 to-blue-100 rounded-full blur-3xl opacity-50"></div>
+      </div>
+
+      <div className="max-w-6xl mx-auto px-6 lg:px-12 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
           className="text-center mb-16"
         >
-          <p className="text-[#672C8C] font-semibold text-sm tracking-wider uppercase mb-4">Solution</p>
-          <h2 className="text-4xl lg:text-5xl font-bold mb-6 text-gray-900">
-            도메랑이 연결합니다
+          <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
+            도매랑이 연결합니다
           </h2>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed">
-            셀러와 공급사를 하나의 플랫폼에서 효율적으로 연결하여<br />
-            모두가 성장할 수 있는 생태계를 만듭니다
+          <p className="text-lg text-gray-600">
+            셀러와 공급사, 하나의 플랫폼에서
           </p>
         </motion.div>
 
-        <div className="grid lg:grid-cols-3 gap-8 items-center">
+        {/* 연결 다이어그램 */}
+        <div className="flex flex-col lg:flex-row items-center justify-center gap-6 lg:gap-4">
           {/* 셀러 */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            whileHover={{ scale: 1.05 }}
-            className="relative group"
+            className="w-full lg:w-auto"
           >
-            <div className="absolute -inset-1 bg-gradient-to-r from-blue-500 to-blue-600 rounded-2xl blur opacity-25 group-hover:opacity-75 transition duration-500"></div>
-            <div className="relative bg-gradient-to-br from-blue-500 to-blue-600 p-8 rounded-2xl text-white shadow-xl">
-              <ShoppingCart className="w-12 h-12 mb-4" />
-              <h3 className="text-2xl font-bold mb-2">셀러</h3>
-              <p className="text-blue-100 leading-relaxed">재고 없이 판매를 시작하고 싶은 온·오프라인 판매자</p>
+            <div className="bg-white rounded-2xl p-6 shadow-lg border-2 border-blue-100 max-w-xs mx-auto">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-12 h-12 bg-blue-500 rounded-xl flex items-center justify-center">
+                  <ShoppingCart className="w-6 h-6 text-white" />
+                </div>
+                <div>
+                  <div className="font-bold text-gray-900">셀러</div>
+                  <div className="text-sm text-gray-500">온·오프라인 판매자</div>
+                </div>
+              </div>
+              <ul className="space-y-2 text-sm text-gray-600">
+                <li className="flex items-center gap-2">
+                  <span className="w-1.5 h-1.5 bg-blue-400 rounded-full"></span>
+                  재고 없이 판매 시작
+                </li>
+                <li className="flex items-center gap-2">
+                  <span className="w-1.5 h-1.5 bg-blue-400 rounded-full"></span>
+                  4개 마켓 자동 연동
+                </li>
+                <li className="flex items-center gap-2">
+                  <span className="w-1.5 h-1.5 bg-blue-400 rounded-full"></span>
+                  주문·배송 자동화
+                </li>
+              </ul>
             </div>
           </motion.div>
 
-          {/* 도메랑 (중앙) */}
+          {/* 화살표 + 도매랑 */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
+            initial={{ opacity: 0, scale: 0.8 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="flex flex-col items-center lg:-mt-8"
+            transition={{ delay: 0.2 }}
+            className="flex flex-col lg:flex-row items-center gap-4"
           >
-            <motion.div 
-              className="bg-gradient-to-br from-[#672C8C] to-[#321148] p-10 rounded-full shadow-2xl mb-4 relative"
-              animate={{ rotate: [0, 5, 0, -5, 0] }}
-              transition={{ duration: 5, repeat: Infinity }}
-            >
-              <div className="absolute inset-0 bg-white/20 rounded-full blur-xl"></div>
-              {/* 이미지 로고 */}
-              <div className="relative z-10 w-20 h-20 flex items-center justify-center">
-                <img 
-                  src="/logo.png" 
-                  alt="도메랑 로고" 
-                  className="w-full h-full object-contain"
-                />
+            <ArrowRight className="w-6 h-6 text-gray-300 rotate-90 lg:rotate-0" />
+
+            {/* 도매랑 로고 */}
+            <div className="relative">
+              <div className="w-24 h-24 bg-gradient-to-br from-[#672C8C] to-[#8B3FAD] rounded-2xl flex items-center justify-center shadow-xl">
+                <img src="/logo.png" alt="도매랑" className="w-16 h-16 object-contain" />
               </div>
-            </motion.div>
-            <h3 className="text-2xl font-bold text-gray-900 mb-1">도메랑</h3>
-            <p className="text-gray-600 text-center">B2B 어린이 교구 플랫폼</p>
+              <motion.div
+                animate={{ scale: [1, 1.2, 1] }}
+                transition={{ duration: 2, repeat: Infinity }}
+                className="absolute -inset-2 bg-purple-400 rounded-2xl blur-xl opacity-20 -z-10"
+              ></motion.div>
+            </div>
+
+            <ArrowRight className="w-6 h-6 text-gray-300 rotate-90 lg:rotate-0" />
           </motion.div>
 
           {/* 공급사 */}
@@ -76,42 +92,60 @@ export default function Solution() {
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            whileHover={{ scale: 1.05 }}
-            className="relative group"
+            className="w-full lg:w-auto"
           >
-            <div className="absolute -inset-1 bg-gradient-to-r from-orange-500 to-orange-600 rounded-2xl blur opacity-25 group-hover:opacity-75 transition duration-500"></div>
-            <div className="relative bg-gradient-to-br from-orange-500 to-orange-600 p-8 rounded-2xl text-white shadow-xl">
-              <Store className="w-12 h-12 mb-4" />
-              <h3 className="text-2xl font-bold mb-2">공급사</h3>
-              <p className="text-orange-100 leading-relaxed">판로를 확대하고 싶은 어린이 교구 제조·유통사</p>
+            <div className="bg-white rounded-2xl p-6 shadow-lg border-2 border-orange-100 max-w-xs mx-auto">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-12 h-12 bg-orange-500 rounded-xl flex items-center justify-center">
+                  <Store className="w-6 h-6 text-white" />
+                </div>
+                <div>
+                  <div className="font-bold text-gray-900">공급사</div>
+                  <div className="text-sm text-gray-500">교구 제조·유통사</div>
+                </div>
+              </div>
+              <ul className="space-y-2 text-sm text-gray-600">
+                <li className="flex items-center gap-2">
+                  <span className="w-1.5 h-1.5 bg-orange-400 rounded-full"></span>
+                  전국 셀러에게 노출
+                </li>
+                <li className="flex items-center gap-2">
+                  <span className="w-1.5 h-1.5 bg-orange-400 rounded-full"></span>
+                  마켓 연동으로 간편 등록
+                </li>
+                <li className="flex items-center gap-2">
+                  <span className="w-1.5 h-1.5 bg-orange-400 rounded-full"></span>
+                  주문 자동 수집
+                </li>
+              </ul>
             </div>
           </motion.div>
         </div>
 
-        {/* 하단 특징 */}
+        {/* 하단 강조 */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          className="grid md:grid-cols-3 gap-8 mt-20"
+          transition={{ delay: 0.3 }}
+          className="mt-16 text-center"
         >
-          {[
-            { emoji: '📦', title: '재고 없이 판매 가능', desc: '위탁 판매로 초기 비용 부담 없이 시작' },
-            { emoji: '🔗', title: '다양한 공급사 한 곳에서', desc: '여러 공급사의 상품을 통합 관리' },
-            { emoji: '⚡', title: '자동화된 주문 관리', desc: '마켓 연동부터 배송까지 자동 처리' }
-          ].map((item, index) => (
-            <motion.div
-              key={index}
-              whileHover={{ y: -8 }}
-              className="text-center p-6 rounded-2xl bg-gray-50 hover:bg-white hover:shadow-lg transition-all duration-300"
-            >
-              <div className="text-5xl mb-4">{item.emoji}</div>
-              <h4 className="text-lg font-bold text-gray-900 mb-2">{item.title}</h4>
-              <p className="text-gray-600 text-sm">{item.desc}</p>
-            </motion.div>
-          ))}
+          <div className="inline-flex items-center gap-6 bg-white px-8 py-4 rounded-2xl shadow-sm">
+            <div className="text-center">
+              <div className="text-2xl font-bold text-[#672C8C]">300+</div>
+              <div className="text-xs text-gray-500">상품 확보</div>
+            </div>
+            <div className="w-px h-10 bg-gray-200"></div>
+            <div className="text-center">
+              <div className="text-2xl font-bold text-[#672C8C]">0원</div>
+              <div className="text-xs text-gray-500">초기 비용</div>
+            </div>
+            <div className="w-px h-10 bg-gray-200"></div>
+            <div className="text-center">
+              <div className="text-2xl font-bold text-[#672C8C]">4+</div>
+              <div className="text-xs text-gray-500">마켓 연동</div>
+            </div>
+          </div>
         </motion.div>
       </div>
     </section>
